@@ -1,0 +1,42 @@
+# Assignment 4 — Double Machine Learning and Meta-Learners
+# Python 3.10–3.12.  CPU only; no CUDA packages needed.
+#
+# Install:
+#   python -m venv .venv
+#   .venv\Scripts\activate          (Windows)
+#   pip install -r requirements.txt
+#
+# Versions below were verified working together.
+
+# --- core causal stack ---
+econml==0.17.0          # DML + meta-learners. Pulls numpy>=2.0.2, scikit-learn>=1.6,<1.10
+dowhy==0.14             # identification (Q4), refutation
+# causalml            # optional; needs a C++ compiler on Windows, skipped
+
+# --- machine learning ---
+scikit-learn>=1.6,<1.10 # MLPRegressor, RandomForest; pinned by econml
+lightgbm>=4.0           # gradient boosting nuisance learner
+
+# --- data / graphs / plotting ---
+pandas>=2.0
+numpy>=2.0.2
+networkx>=3.3           # DAG definition
+matplotlib>=3.8
+scipy>=1.11
+
+# --- data download ---
+kagglehub               # pulls StressLevelDataset.csv
+
+# --- notebook ---
+jupyter
+ipykernel
+
+# --- OPTIONAL: only if you take the PyTorch route for the nuisance net ---
+# sklearn's MLPRegressor already satisfies EconML's interface with no wrapper,
+# so these are needed only if you specifically want the skorch integration exercise.
+# Install torch from the CPU index to avoid downloading ~2.5GB of CUDA libraries:
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install skorch
+#
+# torch                 # CPU build — see command above, do NOT plain `pip install torch`
+# skorch                # wraps a torch module in the scikit-learn API
