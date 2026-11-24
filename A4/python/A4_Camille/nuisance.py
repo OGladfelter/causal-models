@@ -70,7 +70,7 @@ def load_data(path: Path = DATA_PATH) -> pd.DataFrame:
 
 
 if __name__ == "__main__":
-    from dag import OUTCOME, covariates_for  # run as: python src/nuisance.py
+    from A4.python.camille.dag import OUTCOME, covariates_for  # run as: python src/nuisance.py
 
     treatment = "study_load"
     df = load_data()

@@ -18,8 +18,8 @@ import pandas as pd
 from econml.dml import CausalForestDML, LinearDML
 from sklearn.model_selection import KFold
 
-from dag import OUTCOME, TREATMENTS, covariates_for
-from nuisance import make_lgbm, make_mlp
+from A4.python.camille.dag import OUTCOME, TREATMENTS, covariates_for
+from A4.python.camille.nuisance import make_lgbm, make_mlp
 
 NUISANCE = {"MLP": make_mlp, "LightGBM": make_lgbm}
 ALPHA = 0.05  # -> 95% confidence intervals
@@ -114,7 +114,7 @@ def plot_ates(res: pd.DataFrame):
 if __name__ == "__main__":
     import time
 
-    from nuisance import load_data
+    from A4.python.camille.nuisance import load_data
 
     t0 = time.time()
     res = run_pipeline(load_data())
